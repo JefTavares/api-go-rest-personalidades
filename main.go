@@ -2,21 +2,16 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net/http"
+
+	"github.com/jeftavares/api-go-rest/models"
+	"github.com/jeftavares/api-go-rest/routes"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Home Page") //!imprime a msg aonde estiver (no caso localhost:8000)
-}
-
-// lidar com as requisições (tradução livre de handler request ;)
-func HandlerRequest() {
-	http.HandleFunc("/", Home)                   //cria a rota
-	log.Fatal(http.ListenAndServe(":8000", nil)) //log caso de algum erro e sobe o servidor
-}
-
 func main() {
+	models.Personalidades = []models.Personalidade{
+		{Nome: "nome 1", Historia: "historia 1"},
+		{Nome: "nome 2", Historia: "historia 2"},
+	}
 	fmt.Println("Iniciando o servidor Rest com Go")
-	HandlerRequest()
+	routes.HandlerRequest()
 }
