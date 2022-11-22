@@ -1,0 +1,7 @@
+//acessar o postgres
+docker-compose exec postgres sh
+//pegar o hostname
+hostname -i
+
+//ou
+docker inspect 461 | grep IPAddress
